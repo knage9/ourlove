@@ -1,0 +1,278 @@
+$dark_blue: #17212B;
+$light_blue: #2F6EA5;
+$light: #242F3D;
+$dark: #0E1621;
+
+body{
+    font-family: "inrer";
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #f6f6f6;
+}
+
+.telegram-container {
+    display: flex;
+    height: 100vh; /* Высота на весь экран */
+}
+
+.telegram-sidebar {
+    width: 250px;
+    background-color: $dark_blue;
+    color: white;
+    padding: 15px;
+    position: relative; /* Чтобы позиционирование работало правильно */
+}
+
+/* Добавляем стиль для вертикального скролла на мобильных устройствах */
+.telegram-sidebar ul {
+    list-style-type: none;
+    overflow-y: auto; /* Вертикальная прокрутка */
+    height: calc(100vh - 60px); /* Высота для скролла, если потребуется */
+}
+
+.dialog-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dialog-item:hover {
+    background-color: #202B36;
+}
+
+.telegram-chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-left: 2px solid $dark; /* Добавляем разделитель */
+}
+
+.telegram-header {
+    background-color: $dark_blue;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+}
+
+/* Переопределяем отступ для телеги и сообщения */
+.telegram-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: $dark;
+}
+
+.telegram-message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+}
+
+/* Стиль для сообщений Юли */
+.received {
+    background-color: #182533;
+    align-self: flex-start;
+    color: white;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Стиль для моих сообщений */
+.sent {
+    background-color: #2B5278;
+    color: white;
+    align-self: flex-end;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.telegram-input {
+    display: flex;
+    padding: 10px;
+    background-color: $dark_blue;
+}
+
+.telegram-input input {
+    flex: 1;
+    padding: 20px;
+    border: none;
+    border-radius: 100px;
+    background-color: $light;
+    height: 40px;
+}
+
+.telegram-input button {
+    margin-left: 10px;
+    background-color: $light_blue;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 10px 50px;
+    cursor: pointer;
+}
+
+/* Изменение цвета плейсхолдера */
+input::placeholder {
+    color: rgb(141, 141, 141); /* Укажите желаемый цвет */
+    opacity: 1; /* Опционально: делает плейсхолдер непрозрачным */
+    font-size: 14px;
+}
+
+#message-input {
+    color: white; /* Укажите желаемый цвет текста */
+}
+
+#message-input:focus {
+    outline: none; /* Убираем обводку при фокусировке */
+    border: none; /* Опционально: убираем рамку, если она есть */
+}
+
+.item_1{
+    background-color: #2B5278;
+}
+
+// бургер
+
+@media (max-width: 767px) {
+    .header_burger{
+        position: relative;
+        z-index: 3;
+        display: block;
+        width: 30px;
+        height: 18px;
+        cursor: pointer;
+    }
+    .header_burger span,
+    .header_burger::before,
+    .header_burger::after {
+        left: 0;
+        position: absolute;
+        height: 10%;
+        width: 100%;
+        transition: all 0.3s ease 0s;
+        background-color: white;
+    }
+    .header_burger::before,
+    .header_burger::after{
+        content: "";
+    }
+    .header_burger::before{
+        top: 0;
+    }
+    .header_burger::after{
+        bottom: 0;
+    }
+    .header_burger span{
+        top: 50%;
+        transform: scale(1) translate(0px, -50%);
+    }
+    body.lock{
+        overflow: hidden;
+    }
+    .header_burger.active span{
+        transform: scale(0) translate(0px, -50%);
+    }
+    .header_burger.active::before{
+        top: 50%;
+        transform: rotate(-45deg) translate(0px, -50%);
+    }
+    .header_burger.active::after{
+        bottom: 50%;
+        transform: rotate(45deg) translate(0px, 50%);
+    }
+    .telegram-sidebar{
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: $dark;
+        padding: 100px 0px 0px 0px;
+        right: -100%;
+        transition: right 1s ease-in-out;
+        height: 10000%;
+    }
+    .telegram-sidebar.active{
+        right: 0;
+    }
+    .dialog-item {
+        display: block;
+        align-items: center;
+        padding: 0px 20px;
+        margin: 0px;
+        font-size: 36px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+}
+
+.telegram-header {
+    display: flex; /* Включаем Flexbox */
+    align-items: center; /* Выравниваем элементы по вертикали */
+    justify-content: center; /* Выравниваем элементы по горизонтали */
+    position: relative;
+}
+
+.header_burger {
+    position: relative;
+    z-index: 3;
+    display: block;
+    width: 30px;
+    height: 18px;
+    cursor: pointer;
+    margin-right: 10px; /* Отступ справа, если нужно */
+}
+
+.chat-title {
+    flex-grow: 1; /* Даем заголовку максимальную ширину */
+    text-align: center; /* Центрируем текст заголовка */
+}
+
+/* Остальные стили */
+
+@media (max-width: 767px) {
+    .telegram-input{
+        button{
+            padding: 10px;
+            margin-left: 5px;
+        }
+    }
+    /* Стиль для сообщений Юли */
+    .received {
+        max-width: 100%;
+    }
+    /* Стиль для моих сообщений */
+    .sent {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 340px) {
+    .telegram-input{
+        input::placeholder {
+            font-size: 12px;
+        }
+        input{
+            padding: 10px;
+        }
+    }
+}
+
+.responsive-image {
+    width: 100%; /* Изображение будет занимать 100% ширины родительского элемента */
+    height: auto; /* Высота будет автоматически подстраиваться под ширину */
+    border-radius: 10px; /* Радиус границ изображения */
+    max-width: 400px; /* Максимальная ширина изображения */
+}

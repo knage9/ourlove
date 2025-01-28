@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/page_3.css">
+</head>
+<body>
+    
+    <div class="telegram-container">  
+        <div class="telegram-sidebar">
+            <ul id="dialog-list">
+                <li class="dialog-item item_1" data-dialog="dialog1">Сегодня</li>
+                <li class="dialog-item" data-dialog="dialog1">12 ноября 2024</li>
+                <li class="dialog-item" data-dialog="dialog2">13 ноября 2024</li>
+                <li class="dialog-item" data-dialog="dialog3">14 ноября 2024</li>
+                <li class="dialog-item" data-dialog="dialog4">15 ноября 2024</li>
+            </ul>
+        </div>
+        <div class="telegram-chat">
+            <div class="telegram-header">
+                <div class="header_burger">
+                    <span></span>
+                </div>
+                <div class="chat-title">Чат</div>
+            </div>
+            
+            <div class="telegram-body" id="chat-body">
+                <!-- Сообщения будут добавлены здесь -->
+            </div>
+            <div class="telegram-input">
+                <input type="text" id="message-input" placeholder="Введите сообщение..."/>
+                <button id="send-button">Отправить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/burger.js"></script>
+    <script src="js/script_2.js"></script>
+</body>
+</html>

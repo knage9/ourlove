@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/page_1.css">
+</head>
+<body>
+    <div class="container">
+        <button id="playButton">Продолжить</button>
+        <div class="timer" id="timer" style="display: none;">5</div> <!-- Таймер скрыт по умолчанию -->
+        <div class="txt-container" style="display: none;"> <!-- Контейнер текста скрыт по умолчанию -->
+            <p id="textOutput" class="text-slide"></p>
+        </div>
+
+        <div id="slider" class="slider" style="display: none;">
+            <img id="slideImage" src="" alt="Слайд" />
+        </div>
+    </div> 
+    <audio id="backgroundMusic" loop>
+        <source src="audio/три-слова.m4a" type="audio/mpeg">
+    </audio>
+    <script src="js/txt-animate.js"></script>
+</body>
+</html>

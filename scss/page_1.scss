@@ -1,0 +1,83 @@
+$blue: #1F355A;
+$bg: #F9F9F9;
+
+body{
+    background-color: $bg;
+}
+
+* {
+    box-sizing: border-box; /* Убираем проблемы с размерами элементов */
+    margin: 0; /* Убираем отступы по умолчанию */
+    padding: 0; /* Убираем внутренние отступы по умолчанию */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: "inter";
+}
+
+.container {
+    max-width: 1400px; 
+    margin: 0 auto; 
+    height: 100vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+#textOutput {
+    font-size: 40px;
+    line-height: 130%;
+    color: $blue;
+    text-align: center;
+    max-width: 1000px;
+}
+
+.timer {
+    position: absolute; /* Позиционируем таймер абсолютно */
+    top: 50%; /* Устанавливаем отступ сверху 50% */
+    left: 50%; /* Устанавливаем отступ слева 50% */
+    transform: translate(-50%, -50%); /* Сдвигаем таймер на половину его ширины и высоты */
+    font-size: 40px; /* Размер шрифта таймера */
+    color: $blue; /* Цвет текста таймера */
+    z-index: 10; /* Убедитесь, что таймер поверх остальных элементов */
+}
+
+#playButton{
+    padding: 15px 50px;
+    font-size: 18px;
+    background-color: #E0E0E0;
+    color: #1F355A;
+    cursor: pointer;
+    border: 1px solid #1F355A;
+    border-radius: 1000px;
+
+}
+
+
+.slider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.slider img {
+    max-width: 500px; /* Ограничиваем ширину до 500 пикселей */
+    height: auto; /* Высота будет установлена автоматически в пропорциях */
+    border-radius: 10px; /* Добавьте закругление краев, если нужно */
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 500px) {
+    .slider img {
+        max-width: 320px; /* Изображение занимает 100% ширины экрана */
+        height: auto; /* Высота будет установлена автоматически в пропорциях */
+    }
+}

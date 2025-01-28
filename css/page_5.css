@@ -1,0 +1,50 @@
+@charset "UTF-8";
+body {
+  background-color: #FFE8E8;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; /* Убираем проблемы с размерами элементов */
+  margin: 0; /* Убираем отступы по умолчанию */
+  padding: 0; /* Убираем внутренние отступы по умолчанию */
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "inter";
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#textOutput {
+  font-size: 40px;
+  line-height: 130%;
+  color: #4C4C4C;
+  text-align: center;
+  max-width: 1000px;
+}
+
+#playButton {
+  padding: 15px 50px;
+  font-size: 18px;
+  background-color: #FAD6D6;
+  color: #3A3A3A;
+  cursor: pointer;
+  border: 1px solid #3A3A3A;
+  border-radius: 1000px;
+}

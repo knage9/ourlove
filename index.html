@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+
+
+        <div class="cards">
+          <!-- Первая карточка -->
+          <a href="page_5.html" class="card open heartbeat">
+            <p>Важные воспоминания</p>
+          </a>
+    
+          <!-- Закрытые карточки -->
+          <div class="card-wrapper">
+            <div class="card locked">
+              <p>Сюрприз №1</p>
+            </div>
+            <p class="timer" id="timer-2">Откроется через 00:00:00</p>
+          </div>
+    
+          <div class="card-wrapper">
+            <div class="card locked">
+              <p>Сюрприз №2</p>
+            </div>
+            <p class="timer" id="timer-3">Откроется через 00:00:00</p>
+          </div>
+          
+      </div>
+      
+      <!-- Кнопка музыки -->
+      <button class="music-btn" onclick="toggleMusic()">Мелодия любви</button>
+      
+      <audio id="bg-music" loop>
+        <source src="audio/Brian-Eno-An-Ending-Ascent-Remastered-2019.m4a" type="audio/mp3">
+      </audio>
+      
+      <script src="js/level.js"></script>
+</body>
+</html>

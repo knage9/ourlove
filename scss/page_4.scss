@@ -1,0 +1,23 @@
+@import "page_3.scss";
+
+.skip-button {
+    margin-top: 10px;
+    background-color: $light_blue;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 10px 50px;
+    cursor: pointer;
+}
+
+.skip-button:hover {
+    background-color: #0056b3;
+}
+
+.responsive-video {
+    width: 100%; /* Адаптируем ширину видео */
+    height: auto; /* Автоматическая высота */
+    display: block; /* Убираем элементы управления */
+    border-radius: 10px;
+    max-width: 350px;
+}
