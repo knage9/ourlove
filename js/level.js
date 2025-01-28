@@ -66,3 +66,42 @@ function toggleMusic() {
 
 // Инициализация таймеров при загрузке страницы
 updateTimers();
+
+function updateDaysCounter() {
+    const startDate = new Date("2024-11-19T00:00:00+03:00"); // Дата начала отношений с учётом московского времени
+    const now = new Date();
+
+    // Учитываем московский часовой пояс (UTC+3)
+    const moscowOffset = 3 * 60 * 60 * 1000; // Смещение в миллисекундах
+    const moscowTime = new Date(now.getTime() + now.getTimezoneOffset() * 60 * 1000 + moscowOffset);
+
+    const diffTime = moscowTime - startDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    // Функция для правильного склонения слова "день"
+    function getDayWord(number) {
+        const lastDigit = number % 10;
+        const lastTwoDigits = number % 100;
+        if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
+            return "дней";
+        }
+        if (lastDigit === 1) {
+            return "день";
+        }
+        if (lastDigit >= 2 && lastDigit <= 4) {
+            return "дня";
+        }
+        return "дней";
+    }
+
+    const daysCounterElement = document.getElementById("days-counter");
+    if (daysCounterElement) {
+        daysCounterElement.innerText = `Мы вместе ${diffDays} ${getDayWord(diffDays)}`;
+    } else {
+        console.error("Элемент счётчика дней не найден.");
+    }
+}
+
+// Запуск обновления счётчика дней
+updateDaysCounter();
+setInterval(updateDaysCounter, 60 * 1000); // Обновление каждую минуту

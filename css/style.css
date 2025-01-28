@@ -18,7 +18,6 @@ html, body {
 }
 
 .container {
-  padding: 20px;
   max-width: 1200px;
   width: 100%;
   margin: 100px auto;
@@ -141,4 +140,21 @@ html, body {
           align-items: center;
   width: 100%;
   height: 100%;
+}
+
+#days-counter {
+  padding: 10px 10px;
+  font-size: 24px;
+  margin-right: 20px;
+  border: 1px solid #1F355A;
+  color: #1F355A;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+body {
+  padding-left: 20px;
+  padding-right: 20px;
 }
