@@ -216,12 +216,12 @@ function spawnHeart() {
     }
 
     // Добавляем случайность для заморозочного сердца
-    if (Math.random() < 0.03) {
+    if (Math.random() < 0.04) {
         isFrozen = true; // 3% шанс на заморозочное сердце
     }
 
     // Добавляем случайность для огненного сердца
-    if (Math.random() < 0.02) {
+    if (Math.random() < 0.03) {
         isFire = true; // 2% шанс на огненное сердце
     }
 
@@ -344,7 +344,7 @@ window.addEventListener("touchmove", (event) => {
     if (!playerFrozen) {
         const touchX = event.touches[0].clientX; // Текущая позиция касания
         const deltaX = touchX - touchStartX; // Разница между текущей и начальной позицией
-        const speedMultiplier = 2; // Коэффициент ускорения движения
+        const speedMultiplier = 1.5; // Коэффициент ускорения движения
 
         // Перемещаем игрока с учетом ускорения
         playerX += deltaX * speedMultiplier;
@@ -499,7 +499,7 @@ function updateHeartDifficulty() {
                     isGold: Math.random() < 0.1, // 10% шанс на золотое сердце
                     isBig: Math.random() < 0.05, // 5% шанс на большое сердце
                     isFrozen: Math.random() < 0.03, // 3% шанс на заморозочное сердце
-                    isFire: Math.random() < 0.02, // 2% шанс на огненное сердце
+                    isFire: Math.random() < 0.02, // 2% шанса на огненное сердце
                 });
             }
 
