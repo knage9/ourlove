@@ -2,7 +2,7 @@
 const cardsData = [
     {
         id: "timer-2",
-        unlockDate: new Date("2025-01-31T00:10:00").getTime(),
+        unlockDate: new Date("2025-01-31T17:00:00").getTime(),
         text: "Поймай поцелуй",
         url: "game.html" // Уникальная ссылка для карточки
     },
