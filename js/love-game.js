@@ -4,29 +4,22 @@ const scoreDisplay = document.getElementById("score");
 const message = document.getElementById("message");
 const levelDisplay = document.getElementById("level");
 
-// Устанавливаем начальные размеры игрового поля
+// Настройки игры
 let gameWidth = window.innerWidth;
 let gameHeight = window.innerHeight;
-
-// Ограничиваем игровое поле до определенных размеров
-const maxWidth = 600;
-const maxHeight = 800;
-
-if (gameWidth > maxWidth) {
-    gameWidth = maxWidth;
-}
-if (gameHeight > maxHeight) {
-    gameHeight = maxHeight;
-}
+const maxWidth = 600; // Максимальная ширина игрового поля
+const maxHeight = 800; // Максимальная высота игрового поля
+const minHeartSize = 35; // Минимальный размер сердечка
+const maxHeartSize = 50; // Максимальный размер сердечка
 
 canvas.width = gameWidth;
 canvas.height = gameHeight;
 
 let score = 0;
 let playerX = (gameWidth - 50) / 2;
-const playerY = gameHeight - 80;
-const playerWidth = 50;
-const playerHeight = 50;
+const playerY = gameHeight - 105;
+const playerWidth = 100;
+const playerHeight = 65;
 let hearts = [];
 let level = 1; // Начальный уровень сложности
 let levelThreshold = 10; // Количество очков для перехода на следующий уровень
@@ -59,19 +52,23 @@ function drawPlayer() {
     }
 }
 
+// Функция для отрисовки сердца
 function drawHeart(heart) {
-    const heartSize = Math.min(gameWidth, gameHeight) * 0.06;
-    if (heart.isGold) {
-        ctx.drawImage(goldHeartImg, heart.x - heartSize / 2, heart.y - heartSize / 2, heartSize, heartSize); // Золотое сердце
-    } else if (heart.isBig) {
-        ctx.drawImage(heartImg, heart.x - heartSize, heart.y - heartSize, heartSize * 2, heartSize * 2); // Большое сердце
-    } else if (heart.isFrozen) {
-        ctx.drawImage(frozenHeartImg, heart.x - heartSize / 2, heart.y - heartSize / 2, heartSize, heartSize); // Заморозочное сердце
-    } else if (heart.isFire) {
-        ctx.drawImage(fireHeartImg, heart.x - heartSize / 2, heart.y - heartSize / 2, heartSize, heartSize); // Огненное сердце
-    } else {
-        ctx.drawImage(heartImg, heart.x - heartSize / 2, heart.y - heartSize / 2, heartSize, heartSize); // Обычное сердце
-    }
+    const heartSize = getHeartSize(); // Используем функцию для расчета размера
+    const img = heart.isGold ? goldHeartImg :
+                heart.isBig ? heartImg :
+                heart.isFrozen ? frozenHeartImg :
+                heart.isFire ? fireHeartImg :
+                heartImg;
+
+    // Рисуем сердечко с сохранением пропорций
+    ctx.drawImage(img, heart.x, heart.y, heartSize, heartSize);
+}
+
+// Функция для расчета размера сердечка
+function getHeartSize() {
+    const baseSize = Math.min(gameWidth, gameHeight) * 0.06; // Размер зависит от экрана
+    return Math.min(maxHeartSize, Math.max(minHeartSize, baseSize)); // Ограничиваем размер
 }
 
 let playerFrozen = false;
@@ -324,7 +321,6 @@ function updateHeartDifficulty() {
 }
 
 
-
 function movePlayer(event) {
     if (!playerFrozen) {
         const step = playerSpeedBoost ? 60 : 30; // Увеличенный шаг при ускорении
@@ -511,30 +507,15 @@ let bestScore = localStorage.getItem("bestScore") ? parseInt(localStorage.getIte
 bestScoreDisplay.textContent = bestScore;
 
 // Обработка изменения размера окна
-window.addEventListener("resize", resizeCanvas);
-
 function resizeCanvas() {
-    const maxWidth = 600;
-    const maxHeight = 800;
     gameWidth = window.innerWidth > maxWidth ? maxWidth : window.innerWidth;
     gameHeight = window.innerHeight > maxHeight ? maxHeight : window.innerHeight;
     canvas.width = gameWidth;
     canvas.height = gameHeight;
     playerX = (gameWidth - playerWidth) / 2;
-    playerY = gameHeight - playerHeight - 10;
-    hearts.forEach(heart => {
-        heart.y += heart.speed * heartSpeedFactor;
-        if (heart.type === "moving") {
-            heart.x += heart.dx;
-            if (heart.x <= 0 || heart.x >= gameWidth) heart.dx = -heart.dx;
-        }
-        if (heart.type === "parabolic") {
-            heart.x += heart.dx;
-            heart.y += heart.dy;
-            heart.dy += 0.1;
-        }
-    });
 }
+
+window.addEventListener("resize", resizeCanvas);
 
 spawnHeart();
 updateGame();
