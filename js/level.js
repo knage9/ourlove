@@ -2,13 +2,13 @@
 const cardsData = [
     {
         id: "timer-2",
-        unlockDate: new Date("2025-02-10T00:00:00").getTime(),
-        text: "Секрет №1",
-        url: "page_1.html" // Уникальная ссылка для карточки
+        unlockDate: new Date("2025-01-31T00:10:00").getTime(),
+        text: "Поймай поцелуй",
+        url: "game.html" // Уникальная ссылка для карточки
     },
     {
         id: "timer-3",
-        unlockDate: new Date("2025-02-14T00:00:00").getTime(),
+        unlockDate: new Date("2025-02-05T00:00:00").getTime(),
         text: "Секрет №2",
         url: "page_2.html" // Уникальная ссылка для карточки
     }
@@ -36,7 +36,7 @@ function updateTimers() {
             cardElement.innerHTML = `<a href="${card.url}" class="card-link">${card.text}</a>`; // Добавляем ссылку и текст
         } else {
             // Выводим оставшееся время
-            const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 240);
+            const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 2400);
             const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
             const seconds = Math.floor((timeLeft / 1000) % 60);
 
