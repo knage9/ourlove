@@ -38,6 +38,8 @@ const fireHeartImg = new Image();
 fireHeartImg.src = "img/fire.png"; // Огненное сердечко
 
 let eatSound = new Audio("audio/heart.mp3"); // Звук съедания сердечка
+eatSound.volume = 2;
+
 
 // Изображение корзины
 let basketImg = new Image();
@@ -336,20 +338,25 @@ window.addEventListener("keydown", movePlayer);
 
 let touchStartX = 0;
 window.addEventListener("touchstart", (event) => {
-    touchStartX = event.touches[0].clientX;
-});
-window.addEventListener("touchmove", (event) => {
-    if (!playerFrozen) {
-        let touchX = event.touches[0].clientX;
-        const step = playerSpeedBoost ? playerWidth / 5 : playerWidth / 10; // Увеличенный шаг при ускорении для сенсорных устройств
-        playerX += (touchX - touchStartX) / step;
-        // Ограничиваем перемещение корзины по горизонтали
-        if (playerX < 0) playerX = 0;
-        if (playerX > gameWidth - playerWidth) playerX = gameWidth - playerWidth;
-        touchStartX = touchX;
-    }
+    touchStartX = event.touches[0].clientX; // Запоминаем начальную позицию касания
 });
 
+window.addEventListener("touchmove", (event) => {
+    if (!playerFrozen) {
+        const touchX = event.touches[0].clientX; // Текущая позиция касания
+        const deltaX = touchX - touchStartX; // Разница между текущей и начальной позицией
+        const speedMultiplier = 2; // Коэффициент ускорения движения
+
+        // Перемещаем игрока с учетом ускорения
+        playerX += deltaX * speedMultiplier;
+
+        // Ограничиваем перемещение игрока в пределах игрового поля
+        if (playerX < 0) playerX = 0;
+        if (playerX > gameWidth - playerWidth) playerX = gameWidth - playerWidth;
+
+        touchStartX = touchX; // Обновляем начальную позицию для следующего движения
+    }
+});
 // Обновление размеров канваса и позиций при изменении размера окна
 window.addEventListener("resize", resizeCanvas);
 
