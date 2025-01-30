@@ -38,8 +38,7 @@ const fireHeartImg = new Image();
 fireHeartImg.src = "img/fire.png"; // Огненное сердечко
 
 let eatSound = new Audio("audio/heart.mp3"); // Звук съедания сердечка
-eatSound.volume = 2;
-
+eatSound.volume = 1;
 
 // Изображение корзины
 let basketImg = new Image();
